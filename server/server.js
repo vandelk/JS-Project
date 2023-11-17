@@ -11,5 +11,8 @@ require("./config/mongoose.config");
 
 const AllMyUserRoutes = require("./routes/users.routes");
 AllMyUserRoutes(app);
+
+const AllMyGarageRoutes = require("./routes/garage.routes");
+AllMyGarageRoutes(app);
     
 app.listen(port, () => console.log(`Listening on port: ${port}`) );

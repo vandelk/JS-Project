@@ -1,3 +1,4 @@
+import ViewMyGarages from './ViewMyGarages';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -27,10 +28,25 @@ const Dashboard = (props) => {
             .catch(err => console.log(err))
     }
 
+    const createGarage = () => {
+        navigate('/new-garage');
+    }
+
     return (
         <div>
-            <h1>My Garage</h1>
-            <button onClick={logout}>Logout</button>
+            <div>
+                <h1>My Garages</h1>
+                <button onClick={logout}>Logout</button>
+            </div>
+            {
+                loggedIn ? (
+                    <ViewMyGarages user_id={loggedIn._id}/>
+                ): <h3>Loading...</h3>
+                
+            }
+            <div>
+                <button onClick={() => createGarage()}>New Garage</button>
+            </div>
         </div>
     )
 }
