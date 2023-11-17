@@ -91,21 +91,21 @@ const ViewGarage = (props) => {
                     </>
                 );
             })}
-                        <div className='modal fade' id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div className='modal-dialog'>
-                                <div className='modal-content'>
-                                    <div className='modal-header'>
-                                        <h1 className='modal-title fs-5' id='exampleModalLabel'>Make: </h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div className='modal-body'>
-                                        <h1>Make: </h1>
-                                        <h2>Model: </h2>
-                                        <h2>Year Made: </h2>
-                                    </div>
-                                </div>
-                                </div>
+                <div className='modal fade' id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className='modal-dialog'>
+                        <div className='modal-content'>
+                            <div className='modal-header'>
+                                <h1 className='modal-title fs-5' id='exampleModalLabel'>Make: </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <div className='modal-body'>
+                                <h1>Make: </h1>
+                                <h2>Model: </h2>
+                                <h2>Year Made: </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             : <p>This garage is empty. Add some cars!</p> }
             <button className='btn btn-primary garage-btn' onClick={addCar}>Add Car</button>
