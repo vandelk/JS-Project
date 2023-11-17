@@ -14,5 +14,8 @@ AllMyUserRoutes(app);
 
 const AllMyGarageRoutes = require("./routes/garage.routes");
 AllMyGarageRoutes(app);
+
+const AllMyCarRoutes = require("./routes/cars.routes");
+AllMyCarRoutes(app);
     
 app.listen(port, () => console.log(`Listening on port: ${port}`) );

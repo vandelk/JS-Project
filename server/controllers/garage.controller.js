@@ -20,13 +20,13 @@ module.exports.findOneSingleGarage = (req, res) => {
         });
 }
 
-// module.exports.createNewGarage = (req, res) => {
-//     Garage.create(req.body)
-//         .then(newlyCreatedGarage => {
-//             res.json({ garage: newlyCreatedGarage })
-//         })
-//         .catch((err) => res.status(400).json(err));
-// }
+module.exports.createNewGarage = (req, res) => {
+    Garage.create(req.body)
+        .then(newlyCreatedGarage => {
+            res.json({ garage: newlyCreatedGarage })
+        })
+        .catch((err) => res.status(400).json(err));
+}
 
 module.exports.updateExistingGarage = (req, res) => {
     Garage.findOneAndUpdate(
@@ -60,19 +60,5 @@ module.exports.findUsersGarages = (req, res) => {
         })
         .catch((err) => {
             res.json(err)
-        });
-}
-
-// 6556bf65d060ca3728857d14
-
-module.exports.createNewGarage = (req, res) => {
-    Garage.create(req.body)
-        .then(newlyCreatedGarage => {
-           // console.log(newlyCreatedGarage)
-            res.json({ garage: newlyCreatedGarage })
-        })
-        .catch((err) => {
-            console.log(req.body)
-            res.status(400).json(err)
         });
 }

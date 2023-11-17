@@ -4,9 +4,9 @@ import { useNavigate, Link } from 'react-router-dom'
 
 const ViewMyGarages = (props) => {
     const [garages, setGarages] = useState([]);
-    //console.log(props.user_id)
+    
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/garage/${props.user_id}`)
+        axios.get(`http://localhost:8000/api/garages/${props.user_id}`)
             .then(res => {
                 setGarages(res.data)
             })
@@ -18,7 +18,7 @@ const ViewMyGarages = (props) => {
             { garages.map((oneGarage) => {
                 return (
                     <div key={oneGarage._id}>
-                        <Link to={"/garage/" + oneGarage.name}>{oneGarage.name}</Link>
+                        <Link to={"/garage/" + oneGarage._id}>{oneGarage.name}</Link>
                     </div>
                 );
             })}
