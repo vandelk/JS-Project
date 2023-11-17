@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.my-nav {
+  background-color: #282c34;
+  color: white;
+}
+
+.garage-btn {
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+}

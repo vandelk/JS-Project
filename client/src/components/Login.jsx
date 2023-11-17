@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = (props) => {
   const [userLogin, setUserLogin] = useState({
@@ -36,20 +36,22 @@ const Login = (props) => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div >
+      <div className='my-nav navbar p-2 mb-4'>
+                <h1>MyGarages</h1>
+            </div>
+      <h3>Login</h3>
       <form onSubmit={login}>
-        <div>
-          <label>Email</label>
-          <input type="text" name="email" id="email" onChange={changeHandler} />
+        <div className='d-flex justify-content-center mb-3'>
+          <input type="text" className="form-control" style={{width: '18rem'}} name="email" id="email" placeholder='Email' onChange={changeHandler} />
         </div>
-        <div>
-          <label>Password</label>
-          <input type="password" name="password" id="password" onChange={changeHandler} />
+        <div className='d-flex justify-content-center mb-3'>
+          <input type="password" className="form-control" style={{width: '18rem'}} name="password" id="password" placeholder='Password' onChange={changeHandler} />
         </div>
-        <button>Login</button>
+        <button className='btn btn-primary mb-2' >Login</button>
         {errors ? <p>{errors}</p> : ""}
       </form>
+      <Link to='/'>Need to create an account? Register here</Link>
     </div>
   )
 }

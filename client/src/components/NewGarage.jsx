@@ -19,6 +19,15 @@ const NewGarage = (props) => {
         })
     }, [])
 
+    const logout = (e) => {
+        axios.get('http://localhost:8000/api/users/logout', {withCredentials: true})
+            .then(res => {
+                console.log(res)
+                navigate('/login');
+            })
+            .catch(err => console.log(err))
+    }
+
     const changeHandler = e => {
         setGarageName(e.target.value);
     }
@@ -39,14 +48,17 @@ const NewGarage = (props) => {
 
     return (
         <div>
-            <h1>New Garage</h1>
+            <div className='my-nav navbar d-flex p-2 mb-4'>
+                <h1 className='text-center' onClick={() => navigate('/dashboard')}>MyGarages</h1>
+                <button className='btn float-end' onClick={logout}>Logout</button>
+            </div>
+            <h3>New Garage</h3>
             <form onSubmit={createGarage}>
-                <div>
-                    <label>Garage Name</label>
-                    <input type="text" name="name" id="name" onChange={changeHandler}/>
+                <div className='d-flex justify-content-center mb-3'>
+                    <input type="text" className="form-control" style={{width: '18rem'}} name="name" id="name" placeholder='Name' onChange={changeHandler}/>
                     {/* {errors.firstName ? <p>{errors.firstName.message}</p> : ""} */}
                 </div>
-                <button>Create</button>
+                <button className='btn btn-primary'>Create</button>
             </form>
         </div>
     )

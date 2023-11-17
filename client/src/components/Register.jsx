@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
     const [userReg, setUserReg] = useState({
@@ -40,35 +40,36 @@ const Register = () => {
 
     return (
         <div>
-            <h1>Register</h1>
-            <form onSubmit={register}>
-                <div>
-                    <label>First Name</label>
-                    <input type="text" name="firstName" id="firstName" onChange={changeHandler} />
-                    {errors.firstName ? <p>{errors.firstName.message}</p> : ""}
-                </div>
-                <div>
-                    <label>Last Name</label>
-                    <input type="text" name="lastName" id="lastName" onChange={changeHandler}/>
-                    {errors.lastName ? <p>{errors.lastName.message}</p> : ""}
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" name="email" id="email" onChange={changeHandler}/>
-                    {errors.email ? <p>{errors.email.message}</p> : ""}
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="password" name="password" id="password" onChange={changeHandler}/>
-                    {errors.password ? <p>{errors.password.message}</p> : ""}
-                </div>
-                <div>
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirmPassword" id="confirmPassword" onChange={changeHandler}/>
-                    {errors.confirmPassword ? <p>{errors.confirmPassword.message}</p> : ""}
-                </div>
-                <button>Sign Up</button>
-            </form>
+            <div className='my-nav navbar p-2 mb-4'>
+                <h1>MyGarages</h1>
+            </div>
+            <h3>Register</h3>
+            <div className='container'>
+                <form className='col-sm' onSubmit={register}>
+                    <div className='d-flex justify-content-center mb-3'>
+                        <input type="text" className="form-control" style={{width: '18rem'}} name="firstName" id="firstName" placeholder='First Name' onChange={changeHandler} />
+                        {errors.firstName ? <p>{errors.firstName.message}</p> : ""}
+                    </div>
+                    <div className='d-flex justify-content-center mb-3'>
+                        <input type="text" className="form-control" style={{width: '18rem'}} name="lastName" id="lastName" placeholder='Last Name' onChange={changeHandler}/>
+                        {errors.lastName ? <p>{errors.lastName.message}</p> : ""}
+                    </div>
+                    <div className='d-flex justify-content-center mb-3'>
+                        <input type="text" className="form-control" style={{width: '18rem'}} name="email" id="email" placeholder='Email' onChange={changeHandler}/>
+                        {errors.email ? <p>{errors.email.message}</p> : ""}
+                    </div>
+                    <div className='d-flex justify-content-center mb-3'>
+                        <input type="password" className="form-control" style={{width: '18rem'}} name="password" id="password" placeholder='Password' onChange={changeHandler}/>
+                        {errors.password ? <p>{errors.password.message}</p> : ""}
+                    </div>
+                    <div className='d-flex justify-content-center mb-3'>
+                        <input type="password" className="form-control" style={{width: '18rem'}} name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' onChange={changeHandler}/>
+                        {errors.confirmPassword ? <p>{errors.confirmPassword.message}</p> : ""}
+                    </div>
+                    <button className='btn btn-primary mb-2 float-right'>Sign Up</button>
+                </form>
+            </div>
+            <Link to='/login'>Have an account? Login here</Link>
         </div>
     )
 }

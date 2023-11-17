@@ -34,9 +34,9 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <div>
-                <h1>My Garages</h1>
-                <button onClick={logout}>Logout</button>
+            <div className='my-nav navbar d-flex p-2 mb-4'>
+                <h1 className='text-center'>MyGarages</h1>
+                <button className='btn float-end' onClick={logout}>Logout</button>
             </div>
             {
                 loggedIn ? (
@@ -45,7 +45,7 @@ const Dashboard = (props) => {
                 
             }
             <div>
-                <button onClick={() => createGarage()}>New Garage</button>
+                <button className='btn btn-primary garage-btn' onClick={() => createGarage()}>New Garage</button>
             </div>
         </div>
     )

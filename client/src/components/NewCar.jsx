@@ -8,8 +8,18 @@ const NewCar = (props) => {
         model: "",
         year: 0
     });
+    const [garageName, setGarageName] = useState("");
     const { garageId } = useParams();
     const navigate = useNavigate();
+
+    const logout = (e) => {
+        axios.get('http://localhost:8000/api/users/logout', {withCredentials: true})
+            .then(res => {
+                console.log(res)
+                navigate('/login');
+            })
+            .catch(err => console.log(err))
+    }
 
     const changeHandler = e => {
         setCar({
@@ -24,11 +34,11 @@ const NewCar = (props) => {
         axios.get(`http://localhost:8000/api/garage/${garageId}`)
             .then(res => {
                 //console.log(res.data.garage._id)
+                setGarageName(res.data.garage.name)
                 const newCar = {
                     ...car,
                     garage_id: res.data.garage._id
                 }
-                console.log(newCar)
                 return axios.post(`http://localhost:8000/api/car/${res.data.garage._id}`, newCar)
                 .then(res => {
                     console.log(res);
@@ -41,11 +51,15 @@ const NewCar = (props) => {
 
     return (
         <div>
-            <h1>Add a Car</h1>
+            <div className='my-nav navbar d-flex p-2 mb-4'>
+                <h1 className='text-center' onClick={() => navigate('/dashboard')}>MyGarages</h1>
+                <button className='btn float-end' onClick={logout}>Logout</button>
+            </div>
+            <h3>Add a Car</h3>
             <form onSubmit={addCar}>
-                <div>
-                    <label>Manufacturer</label>
-                    <select name="make" id="make" onChange={changeHandler}>
+                <div className='d-flex justify-content-center mb-3'>
+                    <select className="form-select" style={{width: '18rem'}} name="make" id="make" onChange={changeHandler}>
+                        <option hidden selected>Manufacturer</option>
                         <option value="Audi">Audi</option>
                         <option value="Bentley">Bentley</option>
                         <option value="BMW">BMW</option>
@@ -76,15 +90,13 @@ const NewCar = (props) => {
                         <option value="Volvo">Volvo</option>
                     </select>
                 </div>
-                <div>
-                    <label>Model</label>
-                    <input type="text" name="model" id="model" onChange={changeHandler}/>
+                <div className='d-flex justify-content-center mb-3'>
+                    <input type="text" className="form-control" style={{width: '18rem'}} name="model" id="model" placeholder='Model' onChange={changeHandler}/>
                 </div>
-                <div>
-                    <label>Year</label>
-                    <input type="number" name="year" id="year" onChange={changeHandler}/>
+                <div className='d-flex justify-content-center mb-3'>
+                    <input type="number" className="form-control" style={{width: '18rem'}} name="year" id="year" placeholder='Year' onChange={changeHandler}/>
                 </div>
-                <button>Add</button>
+                <button className='btn btn-primary'>Add</button>
             </form>
         </div>
     )
